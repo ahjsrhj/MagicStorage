@@ -77,7 +77,7 @@ namespace MagicStorage
 		private static bool slotFocus = false;
 
 		private static UIElement bottomBar = new UIElement();
-		private static UIText capacityText = new UIText("Items");
+		private static UIText capacityText;
 
 		private static UIPanel recipePanel = new UIPanel();
 		private static float recipeTop;
@@ -89,7 +89,7 @@ namespace MagicStorage
 		private static UIText ingredientText;
 		private static UISlotZone ingredientZone = new UISlotZone(HoverItem, GetIngredient, smallScale);
 		private static UIText reqObjText;
-		private static UIText reqObjText2 = new UIText("");
+		private static UIText reqObjText2;
 		private static UIText storedItemsText;
 
 		private static UISlotZone storageZone = new UISlotZone(HoverStorage, GetStorage, smallScale);
@@ -114,6 +114,8 @@ namespace MagicStorage
 
 		public static void Initialize()
 		{
+			capacityText = new UIText("Items");
+			reqObjText2 = new UIText("");
 			InitLangStuff();
 			float itemSlotWidth = Main.inventoryBackTexture.Width * inventoryScale;
 			float itemSlotHeight = Main.inventoryBackTexture.Height * inventoryScale;

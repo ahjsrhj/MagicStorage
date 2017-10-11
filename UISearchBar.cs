@@ -86,27 +86,22 @@ namespace MagicStorage
 
 			if (hasFocus)
 			{
-				for (int k = (int)Keys.A; k <= (int)Keys.Z; k++)
+				Terraria.GameInput.PlayerInput.WritingText = true;
+				Main.instance.HandleIME();
+				string newString = Main.GetInputText(text);
+				if (!newString.Equals(text))
 				{
-					if (KeyTyped((Keys)k))
-					{
-						InsertKey((char)(k - (int)Keys.A + 'a'));
-					}
+					text = newString;
+					cursorPosition = text.Length;
+					StorageGUI.RefreshItems();
 				}
-				for (int k = (int)Keys.D0; k <= (int)Keys.D9; k++)
+				if (KeyTyped(Keys.Enter))
 				{
-					if (KeyTyped((Keys)k))
-					{
-						InsertKey((char)(k - (int)Keys.D0 + '0'));
-					}
+					Main.drawingPlayerChat = false;
+					hasFocus = false;
+					CheckBlockInput();
 				}
-				foreach (Keys key in keyMap.Keys)
-				{
-					if (KeyTyped(key))
-					{
-						InsertKey(keyMap[key]);
-					}
-				}
+				cursorTimer = 0;
 			}
 			base.Update(gameTime);
 		}
