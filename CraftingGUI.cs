@@ -114,8 +114,6 @@ namespace MagicStorage
 
 		public static void Initialize()
 		{
-			capacityText = new UIText("Items");
-			reqObjText2 = new UIText("");
 			InitLangStuff();
 			float itemSlotWidth = Main.inventoryBackTexture.Width * inventoryScale;
 			float itemSlotHeight = Main.inventoryBackTexture.Height * inventoryScale;
@@ -319,6 +317,14 @@ namespace MagicStorage
 			if (craftButton == null)
 			{
 				craftButton = new UITextPanel<LocalizedText>(Language.GetText("LegacyMisc.72"), 1f);
+			}
+			if (reqObjText2 == null)
+			{
+				reqObjText2 = new UIText(Language.GetText("LegacyInterface.22"));
+			}
+			if (capacityText == null)
+			{
+				capacityText = new UIText(Language.GetText("LegacyInterface.22"));
 			}
 		}
 
